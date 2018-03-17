@@ -13,6 +13,7 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
+    "lodash": "^4.17.5",
     "quicktype": "quicktype/quicktype"
   }
 }

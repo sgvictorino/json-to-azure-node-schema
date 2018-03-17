@@ -31,17 +31,18 @@ import { ConvenienceRenderer } from "quicktype/dist/ConvenienceRenderer";
 import { TargetLanguage } from "quicktype/dist/TargetLanguage";
 import { BooleanOption } from "quicktype/dist/RendererOptions";
 import { StringTypeMapping } from "quicktype/dist/TypeBuilder";
-
+import {Option} from "quicktype/dist/RendererOptions";
 const unicode = require("unicode-properties");
 
-export default class AzureDBStaticSchemaTargetLanguage extends TargetLanguage {
+export class AzureDBStaticSchemaTargetLanguage extends TargetLanguage {
     private readonly _declareUnionsOption = new BooleanOption("declare-unions", "Declare unions as named types", false);
 
     constructor() {
         super("AzureDB", ["azuredb"], "json");
-        this.setOptions([this._declareUnionsOption]);
     }
-
+    protected getOptions(): Option<any>[] {
+        return [];
+}
     protected get partialStringTypeMapping(): Partial<StringTypeMapping> {
         return { date: "date", time: "time", dateTime: "date-time" };
     }

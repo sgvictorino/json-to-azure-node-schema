@@ -9,14 +9,16 @@ import { ConvenienceRenderer } from "quicktype/dist/ConvenienceRenderer";
 import { ClassType, ClassProperty, Type } from "quicktype/dist/Type";
 import { Name, FixedName } from "quicktype/dist/Naming";
 import { capitalize } from "quicktype/dist/Strings";
-
+import { AzureDBStaticSchemaTargetLanguage } from "./AzureDBStaticSchema";
+var testinput = {
+    t:"e"
+    };
 async function main() {
-    const schema = fs.readFileSync("input.schema", "utf8");
+    const schema = testinput;
     const lang = new AzureDBStaticSchemaTargetLanguage();
     const options: Partial<Options> = {
         lang,
-        sources: [ { name: "TopLevel", schema }]
-    };
+sources: [ { name: "TopLevel", schema }] };
     const run = new Run(options);
     const files = await run.run();
     files.forEach((srr, filename) => {

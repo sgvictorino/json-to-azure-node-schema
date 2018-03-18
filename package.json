@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
-    "quicktype": "quicktype/quicktype"
+    "quicktype": "github:quicktype/quicktype",
+    "unicode-properties": "^1.1.0"
   }
 }

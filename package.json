@@ -13,6 +13,8 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "quicktype": "quicktype/quicktype#custom-target-languages"
+    "lodash": "^4.17.5",
+    "quicktype": "github:quicktype/quicktype",
+    "unicode-properties": "^1.1.0"
   }
 }

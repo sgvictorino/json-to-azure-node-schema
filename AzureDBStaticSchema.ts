@@ -10,10 +10,10 @@ import {
     nullableFromUnion,
     matchTypeExhaustive,
     directlyReachableSingleNamedType
-} from "../Type";
-import { TypeGraph } from "../TypeGraph";
+} from "quicktype/dist/Type";
+import { TypeGraph } from "quicktype/dist/TypeGraph";
 
-import { Sourcelike } from "../Source";
+import { Sourcelike } from "quicktype/dist/Source";
 import {
     legalizeCharacters,
     splitIntoWords,
@@ -21,27 +21,28 @@ import {
     firstUpperWordStyle,
     allUpperWordStyle,
     allLowerWordStyle
-} from "../Strings";
-import { intercalate, panic } from "../Support";
+} from "quicktype/dist/Strings";
+import { intercalate, panic } from "quicktype/dist/Support";
 
-import { Namer, Name } from "../Naming";
+import { Namer, Name } from "quicktype/dist/Naming";
 
-import { ConvenienceRenderer } from "../ConvenienceRenderer";
+import { ConvenienceRenderer } from "quicktype/dist/ConvenienceRenderer";
 
-import { TargetLanguage } from "../TargetLanguage";
-import { BooleanOption } from "../RendererOptions";
-import { StringTypeMapping } from "../TypeBuilder";
-
+import { TargetLanguage } from "quicktype/dist/TargetLanguage";
+import { BooleanOption } from "quicktype/dist/RendererOptions";
+import { StringTypeMapping } from "quicktype/dist/TypeBuilder";
+import {Option} from "quicktype/dist/RendererOptions";
 const unicode = require("unicode-properties");
 
-export default class AzureDBStaticSchemaTargetLanguage extends TargetLanguage {
+export class AzureDBStaticSchemaTargetLanguage extends TargetLanguage {
     private readonly _declareUnionsOption = new BooleanOption("declare-unions", "Declare unions as named types", false);
 
     constructor() {
         super("AzureDB", ["azuredb"], "json");
-        this.setOptions([this._declareUnionsOption]);
     }
-
+    protected getOptions(): Option<any>[] {
+        return [];
+}
     protected get partialStringTypeMapping(): Partial<StringTypeMapping> {
         return { date: "date", time: "time", dateTime: "date-time" };
     }

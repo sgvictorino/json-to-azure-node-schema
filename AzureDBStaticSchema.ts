@@ -195,7 +195,7 @@ class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
         if (this.leadingComments !== undefined) {
             this.emitCommentLines("// ", this.leadingComments);
         }
-        this.forEachClass("leading-and-interposing", this.emitClass);
+        this.forEachObject("leading-and-interposing", this.emitClass);
         this.forEachEnum("leading-and-interposing", this.emitEnum);
         if (!this.inlineUnions) {
             this.forEachUnion("leading-and-interposing", this.emitUnion);

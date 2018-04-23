@@ -86,8 +86,8 @@ function simpleNameStyle(original: string, uppercase: boolean): string {
 }
 
 class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
-    constructor(graph: TypeGraph, leadingComments: string[] | undefined, private readonly inlineUnions: boolean) {
-        super(graph, leadingComments);
+    constructor(targetLanguage: TargetLanguage, graph: TypeGraph, leadingComments: string[] | undefined, private readonly inlineUnions: boolean) {
+        super(targetLanguage, graph, leadingComments);
     }
 
     protected topLevelNameStyle(rawName: string): string {

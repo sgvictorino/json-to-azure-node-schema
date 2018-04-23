@@ -7,10 +7,11 @@ import {
     EnumType,
     UnionType,
     ClassType,
-    nullableFromUnion,
-    matchTypeExhaustive,
-    directlyReachableSingleNamedType
+    
 } from "quicktype/dist/Type";
+import {nullableFromUnion,
+    matchTypeExhaustive,
+    directlyReachableSingleNamedType} from "quicktype/dist/TypeUtils"
 import { TypeGraph } from "quicktype/dist/TypeGraph";
 
 import { Sourcelike } from "quicktype/dist/Source";
@@ -50,8 +51,16 @@ export class AzureDBStaticSchemaTargetLanguage extends TargetLanguage {
     get supportsOptionalClassProperties(): boolean {
         return true;
     }
+ /*   The return type of `rendererClass` doesn’t have the `targetLanguage` argument.
+Sorry if I expressed that incorrectly.
+(That shouldn’t be the problem, though)
+`targetLanguage` is not an argument *to* `rendererClass`.
+`rendererClass` returns a constructor, which takes a `targetLanguage` argument.
+Anyway, I’ll try to reproduce your error.
+*/
 
     protected get rendererClass(): new (
+        targetLanguage: TargetLanguage,
         graph: TypeGraph,
         leadingComments: string[] | undefined,
         ...optionValues: any[]
@@ -98,7 +107,7 @@ class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
         return new Namer("types", n => simpleNameStyle(n, true), []);
     }
 
-    protected namerForClassProperty(): Namer {
+    protected namerForObjectProperty(): Namer {
         return new Namer("properties", n => simpleNameStyle(n, false), []);
     }
 

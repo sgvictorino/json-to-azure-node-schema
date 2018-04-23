@@ -1,9 +1,9 @@
 {
   "name": "json-to-azure-node-schema",
   "version": "0.1.0",
-  "main": "app.ts",
+  "main": "example/app.ts",
   "scripts": {
-    "start": "ts-node app.ts",
+    "start": "ts-node example/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "Apache-2.0",

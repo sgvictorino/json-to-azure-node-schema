@@ -138,6 +138,7 @@ class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
             arrayType => ["List<", this.sourceFor(arrayType.items), ">"],
             classType => this.nameForNamedType(classType),
             mapType => ["Map<String, ", this.sourceFor(mapType.values), ">"],
+            _objectType => panic("Object type should have been replaced"),
             enumType => this.nameForNamedType(enumType),
             unionType => {
                 const nullable = nullableFromUnion(unionType);
@@ -156,8 +157,8 @@ class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
         );
     };
 
-    private emitClass = (c: ClassType, className: Name) => {
-         let count = c.properties.count();
+    private emitClass = (c: ClassType, _className: Name) => {
+         let count = c.getProperties().count();
         this.emitLine("{");
         this.indent(() => {
             this.forEachClassProperty(c, "none", (name, _jsonName, p) => {
@@ -193,7 +194,7 @@ class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
 
     protected emitSourceStructure() {
         if (this.leadingComments !== undefined) {
-            this.emitCommentLines("// ", this.leadingComments);
+            this.emitCommentLines(this.leadingComments);
         }
         this.forEachObject("leading-and-interposing", this.emitClass);
         this.forEachEnum("leading-and-interposing", this.emitEnum);

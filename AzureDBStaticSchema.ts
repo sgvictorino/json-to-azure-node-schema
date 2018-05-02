@@ -6,8 +6,7 @@ import {
     Type,
     EnumType,
     UnionType,
-    ClassType,
-    
+    ClassType
 } from "quicktype/dist/Type";
 import {nullableFromUnion,
     matchTypeExhaustive,
@@ -159,7 +158,7 @@ class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
 
     private emitClass = (c: ClassType, _className: Name) => {
          let count = c.getProperties().count();
-        this.emitLine("{");
+        this.emitLine(this.topLevels.keySeq().first()+ ".columns = {");
         this.indent(() => {
             this.forEachClassProperty(c, "none", (name, _jsonName, p) => {
                  const last = --count === 0;
@@ -170,7 +169,7 @@ class AzureDBStaticSchemaRenderer extends ConvenienceRenderer {
                 }
             });
         });
-        this.emitLine("}");
+        this.emitLine("};");
     };
 
     emitEnum = (e: EnumType, enumName: Name) => {

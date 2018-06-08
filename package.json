@@ -2,6 +2,7 @@
   "name": "json-to-azure-node-schema",
   "version": "0.2.0",
   "main": "example/app.ts",
+  "repository": "https://github.com/bitsol/json-to-azure-node-schema"
   "scripts": {
     "start": "ts-node example/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,7 +16,7 @@
   "dependencies": {
     "lodash": "^4.17.5",
     "npm": "^6.0.0",
-    "quicktype": "github:quicktype/quicktype#010b769515206d87d6467965908e25a8a6ef46bd",
+    "quicktype": "^12.0.0",
     "unicode-properties": "^1.1.0"
   }
 }

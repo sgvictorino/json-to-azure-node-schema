@@ -2,7 +2,7 @@
   "name": "json-to-azure-node-schema",
   "version": "0.2.0",
   "main": "example/app.ts",
-  "repository": "https://github.com/bitsol/json-to-azure-node-schema"
+  "repository": "https://github.com/bitsol/json-to-azure-node-schema",
   "scripts": {
     "start": "ts-node example/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"

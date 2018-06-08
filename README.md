@@ -34,6 +34,4 @@ It has only been designed for the most basic types, so if you find a useful one 
 ## Example Usage
 `npm install`
 
-`npm install --only=dev`
-
 `ts-node example/app.ts example/comment.json`

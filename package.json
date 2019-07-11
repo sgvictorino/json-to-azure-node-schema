@@ -14,7 +14,7 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.13",
     "npm": "^6.0.0",
     "quicktype": "^13.0.0",
     "unicode-properties": "^1.1.0"
